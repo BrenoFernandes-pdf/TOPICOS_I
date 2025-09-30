@@ -19,7 +19,7 @@ Motorista::~Motorista()
 
 void Motorista::atribuirVeiculo(Veiculo veiculo)
 {
-    this->driver_Veiculos.push_back(veiculo); //ver qual tipo de ponteiro
+    this->driver_Veiculos.push_back(veiculo); //ver qual tipo de ponteiro tais vetores devem estar na classe FROTA, não mais aqui
 }
 
 void Motorista::desvincularVeiculo(Veiculo veiculo)
