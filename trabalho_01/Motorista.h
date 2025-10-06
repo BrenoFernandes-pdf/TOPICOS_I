@@ -2,10 +2,11 @@
 #define MOTORISTA_H_
 
 #include <string>
-#include "Veiculo.h"
 #include <vector>
+#include "Veiculo.h"
 
-typedef struct{
+typedef struct
+{
     char categoria;
     std::string validade;
     int numCNH;
@@ -16,15 +17,21 @@ class Motorista
 private:
     std::string nome;
     CNH_t cnh;
-    std::vector<Veiculo> driver_Veiculos; //qual tipo de ponteiro usar unique_ptr?
+    std::vector<Veiculo*> veiculosAtribuidos;
+
+private:
+    void addVeiculoAtribuido(Veiculo* veiculo);
+    void rmVeiculoAtribuido(Veiculo* veiculo);
 
 public:
-    Motorista(std::string nome, char categoria, std::string validade, int numCNH);
+    Motorista(const std::string &nome, char &categoria, std::string &validade, const int &numCNH);
     ~Motorista();
-    void atribuirVeiculo(Veiculo veiculo);
-    void desvincularVeiculo(Veiculo veiculo);
-    CNH_t getCNH();
-
+    void listarVeiculosAtribuidos() const;
+    // A classe Frota é "amiga" e tem permissão especial para chamar os acima abaixo(mesmo eles sendo private)
+    friend class Frota;
+    CNH_t getCNH() const;
+    std::string getNome() const;
+    int getNumCNH() const;
 };
 
 #endif /* MOTORISTA_H_ */

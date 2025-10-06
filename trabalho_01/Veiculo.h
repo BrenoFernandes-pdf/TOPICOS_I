@@ -9,23 +9,21 @@
 
 #include <string>
 
-class Veiculo{
+class Veiculo
+{
 private:
     std::string placa;
     std::string modelo;
     int quilometragem;
 
 public:
-    Veiculo(std::string modelo, int quilometragem);
+    Veiculo(const std::string &modelo, int &quilometragem);
     ~Veiculo();
-    void setPlaca(std::string placa);
-    std::string getPlaca();
+    void setQuilometragem(int &quilometragem);
+    void setPlaca(std::string &placa);
+    std::string getPlaca() const;
+    std::string getModelo() const;
+    std::string getQuilometragem() const;
 };
-
-//fazer funções que saibam quais motoristas estão vinculados neste veículo!
-
-
-
-
 
 #endif /* VEICULO_H_ */

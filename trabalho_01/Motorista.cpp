@@ -1,8 +1,10 @@
 #include <iostream>
 #include "Motorista.h"
+#include <algorithm> // para usarmos std::erase
+#include "Veiculo.h"
 
 
-Motorista::Motorista(std::string nome, char categoria, std::string validade, int numCNH)
+Motorista::Motorista(const std::string &nome, char &categoria, std::string &validade, const int &numCNH)
 {
     this->nome = nome;
     this->cnh.categoria = categoria;
@@ -17,21 +19,23 @@ Motorista::~Motorista()
      getCNH().numCNH << std::endl; 
 }
 
-void Motorista::atribuirVeiculo(Veiculo veiculo)
-{
-    this->driver_Veiculos.push_back(veiculo); //ver qual tipo de ponteiro tais vetores devem estar na classe FROTA, não mais aqui
-}
-
-void Motorista::desvincularVeiculo(Veiculo veiculo)
-{
-    //this->driver_Veiculos.pop_back(veiculo); ver qual tipo de ponteiro
-}
-
-CNH_t Motorista::getCNH()
+CNH_t Motorista::getCNH() const
 {
     return this->cnh;
 }
 
+int Motorista::getNumCNH() const {
+    return getCNH().numCNH;
+}
+
+std::string Motorista::getNome() const {
+    return this->nome;
+}
+
+void Motorista::addVeiculoAtribuido(Veiculo* veiculo){
+    this->veiculosAtribuidos.push_back(veiculo);
+
+}
 
 
 
