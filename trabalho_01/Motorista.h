@@ -2,36 +2,30 @@
 #define MOTORISTA_H_
 
 #include <string>
-#include <vector>
+#include <list>
 #include "Veiculo.h"
-
-typedef struct
-{
-    char categoria;
-    std::string validade;
-    int numCNH;
-} CNH_t;
 
 class Motorista
 {
 private:
     std::string nome;
-    CNH_t cnh;
-    std::vector<Veiculo*> veiculosAtribuidos;
+    std::string cnh;
+    // O "chaveiro" do motorista: uma lista de ponteiros para os veículos
+    // que ele está usando, mas não possui.
+    std::list<Veiculo*> veiculosAtribuidos;
 
 private:
     void addVeiculoAtribuido(Veiculo* veiculo);
     void rmVeiculoAtribuido(Veiculo* veiculo);
 
 public:
-    Motorista(const std::string &nome, char &categoria, std::string &validade, const int &numCNH);
+    Motorista(const std::string &nome, const std::string &cnh);
     ~Motorista();
     void listarVeiculosAtribuidos() const;
-    // A classe Frota é "amiga" e tem permissão especial para chamar os acima abaixo(mesmo eles sendo private)
+    // A classe Frota é "amiga". Isso dá a ela acesso aos nossos métodos privados.
     friend class Frota;
-    CNH_t getCNH() const;
+    std::string getCNH() const;
     std::string getNome() const;
-    int getNumCNH() const;
 };
 
 #endif /* MOTORISTA_H_ */

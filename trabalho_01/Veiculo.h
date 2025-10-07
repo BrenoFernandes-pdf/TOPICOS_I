@@ -17,13 +17,12 @@ private:
     int quilometragem;
 
 public:
-    Veiculo(const std::string &modelo, int &quilometragem);
+    Veiculo(const std::string &modelo, int quilometragem, const std::string &placa);
     ~Veiculo();
-    void setQuilometragem(int &quilometragem);
-    void setPlaca(std::string &placa);
+    void setQuilometragem(int quilometragem);
     std::string getPlaca() const;
     std::string getModelo() const;
-    std::string getQuilometragem() const;
+    int getKM() const;
 };
 
 #endif /* VEICULO_H_ */

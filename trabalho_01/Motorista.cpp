@@ -1,31 +1,23 @@
 #include <iostream>
 #include "Motorista.h"
-#include <algorithm> // para usarmos std::erase
 #include "Veiculo.h"
 
 
-Motorista::Motorista(const std::string &nome, char &categoria, std::string &validade, const int &numCNH)
+Motorista::Motorista(const std::string &nome, const std::string &cnh)
 {
     this->nome = nome;
-    this->cnh.categoria = categoria;
-    this->cnh.validade = validade;
-    this->cnh.numCNH = numCNH;
+    this->cnh = cnh;
 }
 
 Motorista::~Motorista()
 {
     std::cout << "Motorista destruído: " << this->nome
-     << ", " << getCNH().categoria << ", " << getCNH().validade << ", " <<
-     getCNH().numCNH << std::endl; 
+     << ", CNH: " << getCNH() << "\n"; 
 }
 
-CNH_t Motorista::getCNH() const
+std::string Motorista::getCNH() const
 {
     return this->cnh;
-}
-
-int Motorista::getNumCNH() const {
-    return getCNH().numCNH;
 }
 
 std::string Motorista::getNome() const {
@@ -34,9 +26,29 @@ std::string Motorista::getNome() const {
 
 void Motorista::addVeiculoAtribuido(Veiculo* veiculo){
     this->veiculosAtribuidos.push_back(veiculo);
-
 }
 
+void Motorista::rmVeiculoAtribuido(Veiculo* veiculo){
+    this->veiculosAtribuidos.remove(veiculo);
+}
+
+void Motorista::listarVeiculosAtribuidos() const{
+    std::cout << "--> Veiculos atualmente com o motorista '" << this->nome << "':\n";
+
+    if(this->veiculosAtribuidos.empty()){
+        std::cout << "    - Nenhum veiculo atribuido.\n";
+    }
+    else {
+
+    for(const Veiculo* veiculoPtr : this->veiculosAtribuidos){
+        if(veiculoPtr){
+            std::cout << "    - Veiculo | Placa: " << veiculoPtr->getPlaca()
+                << ", Modelo: " << veiculoPtr->getModelo() << "\n";   
+        }
+    }
+
+}
+}
 
 
 

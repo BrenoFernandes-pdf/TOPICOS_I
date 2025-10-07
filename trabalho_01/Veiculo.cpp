@@ -1,26 +1,23 @@
 #include <iostream>
 #include "Veiculo.h"
 
-Veiculo::Veiculo(const std::string &modelo, int &quilometragem)
+Veiculo::Veiculo(const std::string &modelo, int quilometragem, const std::string &placa)
 {
     this->modelo = modelo;
     this->quilometragem = quilometragem;
+    this->placa = placa;
 }
 
 Veiculo::~Veiculo()
 {
-    std::cout << "Veículo " << this->modelo << " destruído" << std::endl;
-    std::cout << "Com quilometragem igual a " << this->quilometragem
+    std::cout << "Veículo " << this->modelo << " destruído, com a placa " << this->placa << "."<< std::endl;
+    std::cout << "Com quilometragem igual a " << this->quilometragem << "km. rodados"
               << std::endl;
 }
 
-void Veiculo::setQuilometragem(int &quilometragem)
+void Veiculo::setQuilometragem(int quilometragem)
 {
     this->quilometragem = quilometragem;
-}
-
-void Veiculo::setPlaca(std::string &placa){
-    this->placa = placa;
 }
 
 std::string Veiculo::getPlaca() const {
@@ -29,4 +26,8 @@ std::string Veiculo::getPlaca() const {
 
 std::string Veiculo::getModelo() const {
     return this->modelo;
+}
+
+int Veiculo::getKM() const {
+    return this->quilometragem;
 }
