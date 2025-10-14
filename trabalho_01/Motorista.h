@@ -3,7 +3,6 @@
 
 #include <string>
 #include "Veiculo.h"
-#include <vector>
 
 typedef struct{
     char categoria;
@@ -21,8 +20,6 @@ private:
 public:
     Motorista(std::string nome, char categoria, std::string validade, int numCNH);
     ~Motorista();
-    void atribuirVeiculo(Veiculo veiculo);
-    void desvincularVeiculo(Veiculo veiculo);
     CNH_t getCNH();
 
 };
