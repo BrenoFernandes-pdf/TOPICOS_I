@@ -37,7 +37,7 @@ int main(){
             int somab = 0;
             for(int ky = -1; ky <= 1; ky++){
                 for(int kx = -1; kx <= 1; kx++){
-                    if(y+ky < altura && x+kx < largura && y+ky > 0 && x+kx > 0){
+                    if(y+ky < altura && x+kx < largura && y+ky >= 0 && x+kx >= 0){
                         unsigned int indice_offset = (((y+ky)* largura) + (x+kx)) * canais;
                         int peso = kernel[ky+1][kx+1];
                         somar += imagem[indice_offset] * peso;
